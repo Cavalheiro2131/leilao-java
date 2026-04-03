@@ -49,7 +49,7 @@ public class ProdutosDAO {
     String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
 
     try {
-        Connection conn = new conectaDAO().connectDB();
+        conn = new conectaDAO().connectDB();
         PreparedStatement stmt = conn.prepareStatement(sql);
 
         stmt.setInt(1, id);
@@ -61,11 +61,11 @@ public class ProdutosDAO {
         JOptionPane.showMessageDialog(null, "Erro ao vender produto: " + e.getMessage());
     }
 }
-    public ResultSet listarProdutosVendidos() {
+public ResultSet listarProdutosVendidos() {
     String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
 
     try {
-        Connection conn = new conectaDAO().connectDB();
+        conn = new conectaDAO().connectDB();
         PreparedStatement stmt = conn.prepareStatement(sql);
 
         return stmt.executeQuery();
