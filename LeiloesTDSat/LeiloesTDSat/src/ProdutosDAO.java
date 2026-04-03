@@ -61,6 +61,20 @@ public class ProdutosDAO {
         JOptionPane.showMessageDialog(null, "Erro ao vender produto: " + e.getMessage());
     }
 }
+    public ResultSet listarProdutosVendidos() {
+    String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
+
+    try {
+        Connection conn = new conectaDAO().connectDB();
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        return stmt.executeQuery();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao listar vendidos");
+        return null;
+    }
+}
     
     
         
